@@ -7,15 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" />
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
-    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
-    <script
-        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
-    <link rel="stylesheet"
-        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
-        type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+    <script src="../scripts/mapbox-gl.js"></script>
+    <link href="../styles/mapbox-gl.css" rel="stylesheet" />
+    <script src="../scripts/geocoder.js"></script>
+    <link rel="stylesheet" href="../styles/geocoder.css" />
     <link rel="stylesheet" href="../styles/index.css">
 </head>
 
@@ -85,24 +80,6 @@
         <p>&copy; Copyright 2020, <strong>BackSlash Maps</strong> powered by <i>Mapbox</i></p>
     </div>
     <script>
-        function getLocation() {
-            console.log('Starting Navigator')
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                console.log("Geolocation is not supported by this browser.");
-            }
-        }
-
-        function showPosition(position) {
-            console.log("Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude);
-        }
-
-        getLocation()
-    </script>
-    <script>
-
         // Access Token
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibHVjaWZlcmNyIiwiYSI6ImNrNGx0amIzejJkaHIzZm8yODB2dGx2cXYifQ.sopB-tKzpX_qXc30bv_puQ';
@@ -112,100 +89,21 @@
         mapboxgl.setRTLTextPlugin(
             'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js'
         );
-
-        // Show map
-
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            zoom: 2
-        });
-
-        // Switch Layers
-
-        var layerList = document.getElementById('menu');
-        var inputs = layerList.getElementsByTagName('input');
-
-        function switchLayer(layer) {
-            var layerId = layer.target.id;
-            map.setStyle('mapbox://styles/mapbox/' + layerId + '-v9');
-        }
-
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].onclick = switchLayer;
-        }
-
-        // Render World Copies
-
-        var renderOptions = document.getElementById('render_world_copies');
-        var renderInputs = renderOptions.getElementsByTagName('input');
-
-        function switchRenderOption(option) {
-            var status = option.target.id;
-            map.setRenderWorldCopies(status === 'true');
-        }
-
-        for (var i = 0; i < renderInputs.length; i++) {
-            renderInputs[i].onclick = switchRenderOption;
-        }
-
-        // Geocoder
-
-        var geocoder = new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            placeholder: 'Search for places you love…',
-            mapboxgl: mapboxgl
-        });
-
-
-        document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-
-        // Interactions
-
-        document.getElementById('listing-group').addEventListener('change', function (e) {
-            var handler = e.target.id;
-            if (e.target.checked) {
-                map[handler].enable();
-            } else {
-                map[handler].disable();
-            }
-        });
-
-        // Add zoom and rotation controls to the map.
-
-        map.addControl(new mapboxgl.NavigationControl());
-
-        // Add geolocate control to the map.
-
-        // map.addControl(
-        //     new mapboxgl.GeolocateControl({
-        //         positionOptions: {
-        //             enableHighAccuracy: true
-        //         },
-        //         trackUserLocation: true
-        //     })
-        // );
-
     </script>
+    <script src="../scripts/showMap.js"></script>
+    <script src="../scripts/switchLayers.js"></script>
+    <script src="../scripts/renderWorldCopies.js"></script>
+    <script src="../scripts/geocoderEnable.js"></script>
+    <script src="../scripts/interactions.js"></script>
     <script>
         if (typeof module === 'object') {
             window.module = module; module = undefined;
         }
-    </script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        </script>
     <script>if (window.module) module = window.module;</script>
-    <script>
-        jQuery(document).ready(function () {
-            jQuery("#hamburger").click(function () {
-                jQuery("#sidebar").toggle("slide");
-                jQuery('ham').toggleClass("fa-bars");
-                jQuery('ham').toggleClass("fa-arrow-left");
-            });
-        });
-    </script>
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/jquery-ui.js"></script>
+    <script src="../scripts/toggleHamburger.js"></script>
 </body>
 
 </html>
