@@ -12,4 +12,4 @@ function checkIfOnline() {
 
 window.setInterval(function(){
     checkIfOnline()
-}, 1000);
+}, 2500);
