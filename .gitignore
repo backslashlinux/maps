@@ -1,0 +1,8 @@
+# Ignoring node modules folder
+
+node_modules/
+
+# Ignoring DS_Stores
+
+.DS_Store
+*/.DS_Store
