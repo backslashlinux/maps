@@ -1,4 +1,6 @@
 {
+  
+  "productName": "Maps",
   "name": "maps",
   "version": "0.2.1",
   "description": "View maps and directions on your device",
