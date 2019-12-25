@@ -1,0 +1,31 @@
+{
+  "name": "maps",
+  "version": "0.2.1",
+  "description": "View maps and directions on your device",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BackSlash-Linux/maps.git"
+  },
+  "keywords": [
+    "maps",
+    "backslash",
+    "linux",
+    "directions",
+    "view",
+    "location",
+    "street",
+    "where",
+    "am",
+    "i"
+  ],
+  "author": "BackSlash Linux",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/BackSlash-Linux/maps/issues"
+  },
+  "homepage": "https://github.com/BackSlash-Linux/maps#readme"
+}
