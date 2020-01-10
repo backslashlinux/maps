@@ -30,6 +30,8 @@ app.on('ready', function () {
         }
     });
 
+    mainWindow.removeMenu()
+
     // and load the index.html of the app.
     mainWindow.loadURL('file://' + __dirname + '/views/index.html');
 

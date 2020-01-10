@@ -1,11 +1,11 @@
 {
   "productName": "Maps",
-  "name": "maps",
+  "name": "backslash-maps",
   "version": "0.2.1",
   "description": "View maps and directions on your device",
   "main": "main.js",
   "scripts": {
-    "test": "electron ."
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
