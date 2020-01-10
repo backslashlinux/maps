@@ -5,7 +5,8 @@
   "description": "View maps and directions on your device",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "electron-builder --linux snap"
   },
   "repository": {
     "type": "git",
@@ -28,9 +29,29 @@
   "bugs": {
     "url": "https://github.com/BackSlash-Linux/maps/issues"
   },
-  "homepage": "https://github.com/BackSlash-Linux/maps#readme",
+  "build": {
+    "appId": "com.backslashlinux.maps",
+    "productName": "Maps",
+    "extraResources": [
+      "build/icons/*"
+    ],
+    "copyright": "Copyright © 2019 BackSlash Linux",
+    "icon": "build/icons/icon.png",
+    "snap": {
+      "confinement": "strict",
+      "grade": "stable",
+      "summary": "View maps and directions on your device",
+      "description": "View maps and directions on your device",
+      "synopsis": "View maps and directions on your device",
+      "category": "Utilities"
+    }
+  },
+  "homepage": "https://www.backslashlinux.com",
   "dependencies": {
     "electron": "^7.1.7",
     "is-online": "^8.2.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^21.2.0"
   }
 }
